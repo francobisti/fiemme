@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Magnifica — novecento anni di parola data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carta:#F7F4EC;      /* bianco carta antica */
+  --rosso:#8E2431;      /* rosso Tirolo profondo */
+  --verde:#2E5A44;      /* verde Schützen */
+  --oro:#B08A3E;        /* oro della croce */
+  --inchiostro:#2A2620;
+  --pietra:#7A756B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--carta);color:var(--inchiostro);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.75}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px 70px}
+
+/* fascia superiore: i colori della bandiera 2008 */
+.bandiera{display:flex;height:10px}
+.bandiera div{flex:1}
+.b1{background:#fff}.b2{background:var(--rosso)}.b3{background:#fff}.b4{background:var(--verde)}
+
+header.testata{padding:34px 0 10px;text-align:center;border-bottom:1px solid #D8D2C4}
+/* stemma stilizzato: croce + sei fasce */
+.stemma{width:64px;height:80px;margin:0 auto 16px;position:relative}
+.stemma svg{width:100%;height:100%}
+h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:34px;line-height:1.15;color:var(--inchiostro)}
+.sottotitolo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--rosso);margin-top:6px}
+
+.langbar{display:flex;justify-content:center;gap:8px;margin:22px 0 6px}
+.langbar button{
+  border:1.5px solid var(--verde);background:transparent;color:var(--verde);
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;
+  padding:8px 18px;cursor:pointer;border-radius:2px;
+}
+.langbar button[aria-pressed="true"]{background:var(--verde);color:var(--carta)}
+#lb-lld[aria-pressed="true"]{background:var(--oro);color:var(--carta);border-color:var(--oro)}
+.langbar button:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+
+.ascolta{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:20px auto 8px;padding:14px 26px;border:none;cursor:pointer;
+  background:var(--rosso);color:var(--carta);border-radius:2px;
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;
+}
+.ascolta[data-playing="true"]{background:var(--inchiostro)}
+.ascolta .onda{font-size:18px}
+.nota-voce{text-align:center;font-size:12.5px;color:var(--pietra);margin-bottom:12px}
+
+article{padding-top:14px}
+article p{margin:0 0 20px;font-family:'Cormorant Garamond',serif;font-size:20.5px;line-height:1.72}
+article p.anno{
+  font-size:44px;font-weight:700;text-align:center;color:var(--rosso);
+  letter-spacing:.04em;margin:26px 0 22px;
+}
+article em{font-style:italic;color:var(--verde);font-weight:600}
+.capolettera::first-letter{
+  font-size:58px;float:left;line-height:.9;padding-right:8px;color:var(--oro);
+  font-weight:700;
+}
+.separatore{display:flex;align-items:center;gap:12px;margin:26px 0;color:var(--oro)}
+.separatore::before,.separatore::after{content:"";flex:1;height:1px;background:#D8D2C4}
+.separatore span{font-size:16px}
+
+.chiusa{
+  margin-top:30px;padding:22px;border-top:2px solid var(--oro);border-bottom:2px solid var(--oro);
+  text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:var(--inchiostro);
+}
+
+footer{margin-top:44px;text-align:center}
+footer .fascia{display:flex;height:6px;margin-bottom:14px}
+footer .fascia div{flex:1}
+footer small{font-size:11.5px;color:var(--pietra);letter-spacing:.08em}
+footer small b{color:var(--rosso)}
+</style>
+</head>
+<body>
+
+<div class="bandiera"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div></div>
+
+<div class="wrap">
+
+<header class="testata">
+  <div class="stemma">
+    <svg viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stemma della Magnifica (stilizzato)">
+      <path d="M4 4 H60 V38 C60 58 46 68 32 76 C18 68 4 58 4 38 Z" fill="#FDFCF8" stroke="#2A2620" stroke-width="2.4"/>
+      <rect x="29" y="9" width="6" height="20" fill="#B08A3E"/>
+      <rect x="22" y="15" width="20" height="6" fill="#B08A3E"/>
+      <clipPath id="scudo"><path d="M6 34 H58 V38 C58 56.5 45 66.5 32 74 C19 66.5 6 56.5 6 38 Z"/></clipPath>
+      <g clip-path="url(#scudo)">
+        <rect x="6" y="34" width="52" height="7" fill="#fff"/>
+        <rect x="6" y="41" width="52" height="7" fill="#8E2431"/>
+        <rect x="6" y="48" width="52" height="7" fill="#fff"/>
+        <rect x="6" y="55" width="52" height="7" fill="#8E2431"/>
+        <rect x="6" y="62" width="52" height="7" fill="#fff"/>
+        <rect x="6" y="69" width="52" height="7" fill="#8E2431"/>
+      </g>
+      <path d="M6 34 H58 V38 C58 56.5 45 66.5 32 74 C19 66.5 6 56.5 6 38 Z" fill="none" stroke="#2A2620" stroke-width="1.4"/>
+      <line x1="4" y1="33" x2="60" y2="33" stroke="#2A2620" stroke-width="1.6"/>
+    </svg>
+  </div>
+  <h1 data-i18n="titolo">La Magnifica</h1>
+  <div class="sottotitolo" data-i18n="sotto">novecento anni di parola data</div>
+</header>
+
+<div class="langbar" role="group" aria-label="Lingua">
+  <button id="lb-lld" aria-pressed="false" onclick="setLang('lld')" style="border-color:var(--oro);color:var(--oro)">LADIN</button>
+  <button id="lb-it" aria-pressed="true" onclick="setLang('it')">ITALIANO</button>
+  <button id="lb-en" aria-pressed="false" onclick="setLang('en')">ENGLISH</button>
+  <button id="lb-de" aria-pressed="false" onclick="setLang('de')">DEUTSCH</button>
+</div>
+
+<button class="ascolta" id="btnPlay" onclick="speak()"><span class="onda">🔊</span><span data-i18n="btn">ASCOLTA LA STORIA</span></button>
+<div class="nota-voce" data-i18n="nota">Voce dimostrativa del browser — in produzione: voce naturale pre-registrata</div>
+
+<article id="testo"></article>
+
+<footer>
+  <div class="fascia"><div class="b1" style="background:#fff"></div><div style="background:var(--rosso)"></div><div style="background:#fff"></div><div style="background:var(--verde)"></div></div>
+  <small><b>DEMO</b> · TESTO STORICO DA VALIDARE CON L'ARCHIVIO DELLA MAGNIFICA · UN SISTEMA GUSCIO® · BREVETTI DEP. 2026</small>
+</footer>
+
+</div>
+
+<script>
+var T = {
+it:{
+ titolo:"La Magnifica", sotto:"novecento anni di parola data",
+ btn:"ASCOLTA LA STORIA", nota:"Voce dimostrativa del browser — in produzione: voce naturale pre-registrata",
+ tts:"it-IT",
+ par:[
+  ["anno","Millecentoundici."],
+  ["capolettera","Un secolo prima della Magna Carta inglese, tra queste montagne accade una cosa rara: un principe vescovo e un popolo di montanari si siedono, trattano — e firmano. Sono i Patti Gebardini: la gente di Fiemme accetta la fedeltà a Trento, ma in cambio ottiene ciò che quasi nessun popolo d'Europa possedeva — il diritto di governarsi da sola."],
+  ["p","Da quel giorno, questa valle parla una lingua tutta sua. I suoi abitanti si chiamano <em>vicini</em>. Le famiglie sono <em>fuochi</em>. I paesi sono <em>Regole</em> — undici, da Trodena a Moena — e ognuna elegge il suo <em>Regolano</em>. E a capo di tutti, un uomo scelto ogni anno: <em>lo Scario</em>. Non un signore. Non un conte. Un primo tra pari."],
+  ["p","Le decisioni si prendevano all'aperto, attorno a un tavolo di pietra che esiste ancora: il <em>banco de la reson</em> — il banco della ragione. Perché qui i contenziosi non si risolvevano con la spada, ma con la parola."],
+  ["sep","✦"],
+  ["p","Questo palazzo era la residenza estiva dei principi vescovi di Trento. Le sue sale hanno visto udienze e processi; le sue prigioni conservano ancora, incise nella pietra, le parole dei carcerati — e la memoria dolorosa dei processi alle donne accusate di stregoneria, nel Cinquecento."],
+  ["p","Nel 1587 il cardinale Ludovico Madruzzo concede alla Comunità uno stemma: la croce dorata di Trento sopra un monte a sei fasce bianche e rosse. Uno stemma dato non a un nobile, non a un casato — ma a un intero popolo. Un fatto quasi unico, per quell'epoca."],
+  ["sep","✦"],
+  ["p","E poi c'è il bosco. Ventimila ettari di foreste che i vicini custodiscono da sempre come un bene di tutti: si taglia solo ciò che ricresce, da secoli — tanto che questa è stata la prima foresta certificata d'Italia. Da questi abeti, trecento anni fa, un liutaio di Cremona sceglieva il legno per i violini più celebri del mondo."],
+  ["chiusa","La voce che stai ascoltando è soltanto l'ultima forma di una storia molto antica: quella di una comunità che da novecento anni si tiene insieme con la parola. Prima i patti, poi il banco della ragione, oggi questa voce — nella tua lingua, chiunque tu sia. Benvenuto alla Magnifica. Qui, la parola è sempre stata la cosa più solida che esista."]
+ ]},
+en:{
+ titolo:"The Magnifica", sotto:"nine hundred years of the given word",
+ btn:"LISTEN TO THE STORY", nota:"Demo browser voice — in production: natural pre-recorded voice",
+ tts:"en-GB",
+ par:[
+  ["anno","The year 1111."],
+  ["capolettera","A century before England's Magna Carta, something rare happens among these mountains: a prince-bishop and a people of mountaineers sit down, negotiate — and sign. These are the Gebardine Pacts: the people of Fiemme accept allegiance to Trento, and in return they obtain what almost no people in Europe possessed — the right to govern themselves."],
+  ["p","From that day on, this valley speaks a language of its own. Its inhabitants are called <em>vicini</em> — the neighbours. Families are <em>fuochi</em> — the hearths. The villages are <em>Regole</em> — eleven of them, from Trodena to Moena — and each elects its <em>Regolano</em>. And at the head of them all, a man chosen anew every year: <em>the Scario</em>. Not a lord. Not a count. A first among equals."],
+  ["p","Decisions were taken in the open air, around a stone table that still exists: the <em>banco de la reson</em> — the bench of reason. Because here, disputes were settled not with the sword, but with the word."],
+  ["sep","✦"],
+  ["p","This palace was the summer residence of the prince-bishops of Trento. Its halls have seen audiences and trials; its prisons still preserve, carved into the stone, the words of the prisoners — and the painful memory of the trials of women accused of witchcraft, in the sixteenth century."],
+  ["p","In 1587 Cardinal Ludovico Madruzzo granted the Community a coat of arms: the golden cross of Trento above a mount of six white and red bands. A coat of arms given not to a nobleman, not to a dynasty — but to an entire people. Almost unheard of, in those times."],
+  ["sep","✦"],
+  ["p","And then there is the forest. Twenty thousand hectares of woodland that the vicini have always tended as a common good: for centuries, only what grows back has been cut — so much so that this became the first certified forest in Italy. From these spruces, three hundred years ago, a violin maker from Cremona chose the wood for the most celebrated violins in the world."],
+  ["chiusa","The voice you are listening to is only the latest form of a very old story: that of a community that for nine hundred years has held itself together with the word. First the pacts, then the bench of reason, today this voice — in your language, whoever you are. Welcome to the Magnifica. Here, the word has always been the most solid thing there is."]
+ ]},
+de:{
+ titolo:"Die Magnifica", sotto:"neunhundert Jahre gegebenes Wort",
+ btn:"DIE GESCHICHTE ANHÖREN", nota:"Demo-Browserstimme — in Produktion: natürliche, vorab aufgenommene Stimme",
+ tts:"de-DE",
+ par:[
+  ["anno","Elfhundertelf."],
+  ["capolettera","Ein Jahrhundert vor der englischen Magna Carta geschieht zwischen diesen Bergen etwas Seltenes: Ein Fürstbischof und ein Volk von Bergbewohnern setzen sich zusammen, verhandeln — und unterschreiben. Es sind die Gebardinischen Pakte: Die Menschen des Fleimstals erkennen die Treue zu Trient an, erhalten dafür aber, was kaum ein Volk Europas besaß — das Recht, sich selbst zu regieren."],
+  ["p","Seit jenem Tag spricht dieses Tal eine ganz eigene Sprache. Seine Bewohner heißen <em>vicini</em> — die Nachbarn. Die Familien sind <em>fuochi</em> — die Feuerstellen. Die Dörfer sind <em>Regole</em> — elf an der Zahl, von Truden bis Moena — und jede wählt ihren <em>Regolano</em>. Und an der Spitze aller ein Mann, jedes Jahr neu gewählt: <em>der Scario</em>. Kein Herr. Kein Graf. Ein Erster unter Gleichen."],
+  ["p","Die Entscheidungen fielen unter freiem Himmel, an einem steinernen Tisch, den es noch heute gibt: dem <em>banco de la reson</em> — der Bank der Vernunft. Denn hier wurden Streitigkeiten nicht mit dem Schwert entschieden, sondern mit dem Wort."],
+  ["sep","✦"],
+  ["p","Dieser Palast war die Sommerresidenz der Fürstbischöfe von Trient. Seine Säle sahen Audienzen und Prozesse; seine Gefängnisse bewahren noch heute, in Stein geritzt, die Worte der Gefangenen — und die schmerzliche Erinnerung an die Prozesse gegen Frauen, die im sechzehnten Jahrhundert der Hexerei beschuldigt wurden."],
+  ["p","1587 verlieh Kardinal Ludovico Madruzzo der Gemeinschaft ein Wappen: das goldene Kreuz von Trient über einem Berg mit sechs weiß-roten Streifen. Ein Wappen, verliehen nicht einem Adligen, nicht einem Geschlecht — sondern einem ganzen Volk. Für jene Zeit fast einmalig."],
+  ["sep","✦"],
+  ["p","Und dann ist da der Wald. Zwanzigtausend Hektar, die die vicini seit jeher als Gemeingut pflegen: Seit Jahrhunderten wird nur geschlagen, was nachwächst — so wurde dieser Wald der erste zertifizierte Wald Italiens. Aus diesen Fichten wählte vor dreihundert Jahren ein Geigenbauer aus Cremona das <em>Klangholz</em> für die berühmtesten Geigen der Welt."],
+  ["chiusa","Die Stimme, die Sie gerade hören, ist nur die jüngste Form einer sehr alten Geschichte: der Geschichte einer Gemeinschaft, die sich seit neunhundert Jahren durch das Wort zusammenhält. Zuerst die Pakte, dann die Bank der Vernunft, heute diese Stimme — in Ihrer Sprache, wer immer Sie sind. Willkommen bei der Magnifica. Hier war das Wort schon immer das Beständigste, was es gibt."]
+ ]},
+lld:{
+ titolo:"La Magnifica", sotto:"la lingua più antica della valle",
+ btn:"", nota:"", tts:"it-IT",
+ par:[
+  ["anno","LADIN"],
+  ["capolettera","La versione ladina di questa storia non è ancora qui — ed è una scelta. Il ladino non si affida a una macchina: è la lingua più antica della valle, e merita di più."],
+  ["p","Il testo sarà tradotto e validato con l'<em>Istituto Cultural Ladin</em>, e la voce che lo leggerà non sarà sintetica: sarà la <em>voce vera di una persona della Comunità</em> — perché alla lingua di casa si riserva l'onore di una voce in carne e ossa."],
+  ["sep","✦"],
+  ["chiusa","Dieci lingue parlate dalla tecnologia più avanzata del mondo. E una — la vostra — parlata da voi."]
+ ]}
+};
+
+var LANG='it', playing=false;
+function render(){
+  var d=T[LANG];
+  document.documentElement.lang = LANG==='lld' ? 'it' : LANG;
+  ['it','en','de','lld'].forEach(function(x){document.getElementById('lb-'+x).setAttribute('aria-pressed', x===LANG?'true':'false');});
+  var showPlay = LANG!=='lld';
+  document.getElementById('btnPlay').style.display = showPlay?'flex':'none';
+  document.querySelector('.nota-voce').style.display = showPlay?'block':'none';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n'); if(d[k]) el.textContent=d[k];});
+  var art=document.getElementById('testo'); art.innerHTML='';
+  d.par.forEach(function(pr){
+    if(pr[0]==='sep'){var s=document.createElement('div');s.className='separatore';s.innerHTML='<span>'+pr[1]+'</span>';art.appendChild(s);return;}
+    var p=document.createElement('p');
+    if(pr[0]==='anno')p.className='anno';
+    if(pr[0]==='capolettera')p.className='capolettera';
+    if(pr[0]==='chiusa'){p.className='chiusa';}
+    p.innerHTML=pr[1];
+    art.appendChild(p);
+  });
+}
+function setLang(l){stopSpeak(); LANG=l; render();}
+function stopSpeak(){
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  playing=false;
+  var b=document.getElementById('btnPlay'); b.dataset.playing='false';
+  b.innerHTML='<span class="onda">🔊</span><span>'+T[LANG].btn+'</span>';
+}
+function speak(){
+  if(!('speechSynthesis' in window)) return;
+  if(playing){stopSpeak();return;}
+  var d=T[LANG];
+  var text=d.par.map(function(pr){return pr[0]==='sep'?'':pr[1].replace(/<[^>]+>/g,'');}).join(' ');
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang=d.tts; u.rate=0.95;
+  var vs=window.speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.toLowerCase().indexOf(LANG)===0;});
+  if(vs.length)u.voice=vs[0];
+  u.onend=stopSpeak; u.onerror=stopSpeak;
+  playing=true;
+  var b=document.getElementById('btnPlay'); b.dataset.playing='true';
+  b.innerHTML='<span class="onda">◼</span><span>STOP</span>';
+  window.speechSynthesis.speak(u);
+}
+render();
+</script>
+</body>
+</html>
