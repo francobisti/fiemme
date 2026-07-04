@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il Salone clesiano — la sala delle udienze</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carta:#F7F4EC; --rosso:#8E2431; --verde:#2E5A44; --oro:#B08A3E;
+  --inchiostro:#2A2620; --pietra:#7A756B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--carta);color:var(--inchiostro);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.75}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px 70px}
+.bandiera{display:flex;height:10px}
+.bandiera div{flex:1}
+.b1{background:#fff}.b2{background:var(--rosso)}.b3{background:#fff}.b4{background:var(--verde)}
+
+header.testata{padding:30px 0 12px;text-align:center;border-bottom:1px solid #D8D2C4}
+.percorso{font-size:11.5px;letter-spacing:.18em;color:var(--pietra);margin-bottom:14px}
+.percorso a{color:var(--verde);text-decoration:none;font-weight:600}
+h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;line-height:1.15}
+.sottotitolo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--rosso);margin-top:6px}
+
+.langbar{display:flex;justify-content:center;gap:8px;margin:22px 0 6px;flex-wrap:wrap}
+.langbar button{
+  border:1.5px solid var(--verde);background:transparent;color:var(--verde);
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;
+  padding:8px 16px;cursor:pointer;border-radius:2px;
+}
+.langbar button[aria-pressed="true"]{background:var(--verde);color:var(--carta)}
+#lb-lld{border-color:var(--oro);color:var(--oro)}
+#lb-lld[aria-pressed="true"]{background:var(--oro);color:var(--carta);border-color:var(--oro)}
+.langbar button:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+
+.ascolta{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:20px auto 8px;padding:14px 26px;border:none;cursor:pointer;
+  background:var(--rosso);color:var(--carta);border-radius:2px;
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;
+}
+.ascolta[data-playing="true"]{background:var(--inchiostro)}
+.nota-voce{text-align:center;font-size:12.5px;color:var(--pietra);margin-bottom:12px}
+
+article{padding-top:14px}
+article p{margin:0 0 20px;font-family:'Cormorant Garamond',serif;font-size:20.5px;line-height:1.72}
+article p.incipit{font-style:italic;font-size:22px;color:var(--rosso);text-align:center;margin:24px 0 26px}
+article em{font-style:italic;color:var(--verde);font-weight:600}
+.capolettera::first-letter{font-size:58px;float:left;line-height:.9;padding-right:8px;color:var(--oro);font-weight:700}
+.separatore{display:flex;align-items:center;gap:12px;margin:26px 0;color:var(--oro)}
+.separatore::before,.separatore::after{content:"";flex:1;height:1px;background:#D8D2C4}
+.separatore span{font-size:16px}
+.dettaglio{
+  margin-top:26px;padding:18px 20px;background:#FDFCF8;border:1.5px solid #D8D2C4;border-left:5px solid var(--oro);
+  font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;
+}
+
+footer{margin-top:44px;text-align:center}
+footer .fascia{display:flex;height:6px;margin-bottom:14px}
+footer small{font-size:11.5px;color:var(--pietra);letter-spacing:.08em}
+footer small b{color:var(--rosso)}
+</style>
+</head>
+<body>
+
+<div class="bandiera"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div></div>
+
+<div class="wrap">
+
+<header class="testata">
+  <div class="percorso"><a href="index.html">PALAZZO DELLA MAGNIFICA</a> · SALA 04</div>
+  <h1 data-i18n="titolo">Il Salone clesiano</h1>
+  <div class="sottotitolo" data-i18n="sotto">la sala delle udienze</div>
+</header>
+
+<div class="langbar" role="group" aria-label="Lingua">
+  <button id="lb-lld" aria-pressed="false" onclick="setLang('lld')">LADIN</button>
+  <button id="lb-it" aria-pressed="true" onclick="setLang('it')">ITALIANO</button>
+  <button id="lb-en" aria-pressed="false" onclick="setLang('en')">ENGLISH</button>
+  <button id="lb-de" aria-pressed="false" onclick="setLang('de')">DEUTSCH</button>
+</div>
+
+<button class="ascolta" id="btnPlay" onclick="speak()"><span>🔊</span><span data-i18n="btn">ASCOLTA LA SALA</span></button>
+<div class="nota-voce" data-i18n="nota">Voce dimostrativa del browser — in produzione: voce naturale pre-registrata</div>
+
+<article id="testo"></article>
+
+<footer>
+  <div class="fascia"><div style="flex:1;background:#fff"></div><div style="flex:1;background:var(--rosso)"></div><div style="flex:1;background:#fff"></div><div style="flex:1;background:var(--verde)"></div></div>
+  <small><b>DEMO</b> · TESTO DA VALIDARE CON L'ARCHIVIO DELLA MAGNIFICA · UN SISTEMA GUSCIO® · BREVETTI DEP. 2026</small>
+</footer>
+
+</div>
+
+<script>
+var T = {
+it:{
+ titolo:"Il Salone clesiano", sotto:"la sala delle udienze",
+ btn:"ASCOLTA LA SALA", nota:"Voce dimostrativa del browser — in produzione: voce naturale pre-registrata",
+ tts:"it-IT",
+ par:[
+  ["incipit","Sei nella sala dove, per secoli, la parola aveva forza di legge."],
+  ["capolettera","Qui il vicario del principe vescovo di Trento teneva udienza, assistito dal Consiglio dei Giurati di Fiemme: uomini della valle, seduti accanto al rappresentante del potere. Anche nel giudizio, questa terra pretendeva di esserci."],
+  ["p","Alza gli occhi. Il fregio che corre lungo le pareti fu dipinto tra il 1537 e il 1539, negli anni del cardinale <em>Bernardo Clesio</em>, da cui la sala prende il nome. Quattordici riquadri a grottesche: creature fantastiche, putti che giocano, tralci che si intrecciano — un mondo capovolto e ironico che osservava, dall'alto, la serietà dei processi."],
+  ["sep","✦"],
+  ["p","In questa sala si decidevano confini, eredità, torti e ragioni. Chi entrava da queste porte sapeva che il suo destino sarebbe passato per le parole — le sue, e quelle dei giurati. Ed è forse per questo che i pittori vollero, sopra le teste dei giudici, un fregio pieno di vita e di gioco: per ricordare che sopra ogni giudizio c'è sempre qualcosa di più leggero e di più grande."],
+  ["dettaglio","Prima di uscire, un dettaglio: cerca tra le grottesche i levrieri e i putti musicanti. Sono lì da quasi cinquecento anni — e hanno assistito a ogni parola."]
+ ]},
+en:{
+ titolo:"The Clesian Hall", sotto:"the hall of audiences",
+ btn:"LISTEN TO THIS ROOM", nota:"Demo browser voice — in production: natural pre-recorded voice",
+ tts:"en-GB",
+ par:[
+  ["incipit","You are standing in the hall where, for centuries, the word had the force of law."],
+  ["capolettera","Here the vicar of the prince-bishop of Trento held his audiences, assisted by the Council of the Jurors of Fiemme: men of the valley, seated beside the representative of power. Even in judgement, this land insisted on being present."],
+  ["p","Look up. The frieze running along the walls was painted between 1537 and 1539, in the years of Cardinal <em>Bernardo Clesio</em>, after whom the hall is named. Fourteen panels of grotesques: fantastic creatures, playing putti, intertwining vines — an upside-down, ironic world watching, from above, the gravity of the trials."],
+  ["sep","✦"],
+  ["p","In this hall, boundaries, inheritances, wrongs and rights were decided. Whoever came through these doors knew that their fate would pass through words — their own, and those of the jurors. And perhaps that is why the painters wanted, above the judges' heads, a frieze full of life and play: to remember that above every judgement there is always something lighter, and something greater."],
+  ["dettaglio","Before you leave, one detail: look among the grotesques for the greyhounds and the music-making putti. They have been there for almost five hundred years — and they have witnessed every word."]
+ ]},
+de:{
+ titolo:"Der Clesianische Saal", sotto:"der Saal der Audienzen",
+ btn:"DIESEN SAAL ANHÖREN", nota:"Demo-Browserstimme — in Produktion: natürliche, vorab aufgenommene Stimme",
+ tts:"de-DE",
+ par:[
+  ["incipit","Sie stehen in dem Saal, in dem das Wort jahrhundertelang Gesetzeskraft hatte."],
+  ["capolettera","Hier hielt der Vikar des Fürstbischofs von Trient seine Audienzen, unterstützt vom Rat der Geschworenen von Fiemme: Männer des Tales, die neben dem Vertreter der Macht saßen. Selbst im Gericht bestand dieses Land darauf, dabei zu sein."],
+  ["p","Blicken Sie nach oben. Der Fries entlang der Wände wurde zwischen 1537 und 1539 gemalt, in den Jahren des Kardinals <em>Bernardo Clesio</em>, nach dem der Saal benannt ist. Vierzehn Felder mit Grotesken: Fabelwesen, spielende Putten, sich windende Ranken — eine verkehrte, ironische Welt, die von oben auf den Ernst der Prozesse herabblickte."],
+  ["sep","✦"],
+  ["p","In diesem Saal wurden Grenzen, Erbschaften, Unrecht und Recht entschieden. Wer durch diese Türen trat, wusste: Sein Schicksal würde durch Worte gehen — die eigenen und die der Geschworenen. Und vielleicht wollten die Maler gerade deshalb über den Köpfen der Richter einen Fries voller Leben und Spiel: als Erinnerung daran, dass über jedem Urteil immer etwas Leichteres steht — und etwas Größeres."],
+  ["dettaglio","Bevor Sie gehen, ein Detail: Suchen Sie zwischen den Grotesken die Windhunde und die musizierenden Putten. Sie sind seit fast fünfhundert Jahren dort — und haben jedes Wort miterlebt."]
+ ]},
+lld:{
+ titolo:"Il Salone clesiano", sotto:"la lingua più antica della valle",
+ btn:"", nota:"", tts:"it-IT",
+ par:[
+  ["incipit","LADIN"],
+  ["capolettera","La versione ladina di questa sala non è ancora qui — ed è una scelta. Il ladino non si affida a una macchina: è la lingua più antica della valle, e merita di più."],
+  ["p","Il testo sarà tradotto e validato con l'<em>Istituto Cultural Ladin</em>, e la voce che lo leggerà sarà la <em>voce vera di una persona della Comunità</em>."],
+  ["dettaglio","Dieci lingue parlate dalla tecnologia più avanzata del mondo. E una — la vostra — parlata da voi."]
+ ]}
+};
+
+var LANG='it', playing=false;
+function render(){
+  var d=T[LANG];
+  document.documentElement.lang = LANG==='lld' ? 'it' : LANG;
+  ['lld','it','en','de'].forEach(function(x){document.getElementById('lb-'+x).setAttribute('aria-pressed', x===LANG?'true':'false');});
+  var showPlay = LANG!=='lld';
+  document.getElementById('btnPlay').style.display = showPlay?'flex':'none';
+  document.querySelector('.nota-voce').style.display = showPlay?'block':'none';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n'); if(d[k]) el.textContent=d[k];});
+  var art=document.getElementById('testo'); art.innerHTML='';
+  d.par.forEach(function(pr){
+    if(pr[0]==='sep'){var s=document.createElement('div');s.className='separatore';s.innerHTML='<span>'+pr[1]+'</span>';art.appendChild(s);return;}
+    var el=document.createElement(pr[0]==='dettaglio'?'div':'p');
+    if(pr[0]==='incipit')el.className='incipit';
+    if(pr[0]==='capolettera')el.className='capolettera';
+    if(pr[0]==='dettaglio')el.className='dettaglio';
+    el.innerHTML=pr[1];
+    art.appendChild(el);
+  });
+}
+function setLang(l){stopSpeak(); LANG=l; render();}
+function stopSpeak(){
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  playing=false;
+  var b=document.getElementById('btnPlay'); b.dataset.playing='false';
+  b.innerHTML='<span>🔊</span><span>'+T[LANG].btn+'</span>';
+}
+function speak(){
+  if(!('speechSynthesis' in window)) return;
+  if(playing){stopSpeak();return;}
+  var d=T[LANG];
+  var text=d.par.map(function(pr){return pr[0]==='sep'?'':pr[1].replace(/<[^>]+>/g,'');}).join(' ');
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang=d.tts; u.rate=0.95;
+  var vs=window.speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.toLowerCase().indexOf(LANG==='lld'?'it':LANG)===0;});
+  if(vs.length)u.voice=vs[0];
+  u.onend=stopSpeak; u.onerror=stopSpeak;
+  playing=true;
+  var b=document.getElementById('btnPlay'); b.dataset.playing='true';
+  b.innerHTML='<span>◼</span><span>STOP</span>';
+  window.speechSynthesis.speak(u);
+}
+render();
+</script>
+</body>
+</html>
