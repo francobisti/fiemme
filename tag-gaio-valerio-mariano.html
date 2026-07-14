@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'iscrizione di Gaio Valerio Mariano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --carta:#F7F4EC; --rosso:#8E2431; --verde:#2E5A44; --oro:#B08A3E;
+  --inchiostro:#2A2620; --pietra:#7A756B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--carta);color:var(--inchiostro);font-family:'Archivo',sans-serif;font-size:17px;line-height:1.75}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px 70px}
+.bandiera{display:flex;height:10px}
+.bandiera div{flex:1}
+.b1{background:#fff}.b2{background:var(--rosso)}.b3{background:#fff}.b4{background:var(--verde)}
+
+header.testata{padding:30px 0 12px;text-align:center;border-bottom:1px solid #D8D2C4}
+.percorso{font-size:11.5px;letter-spacing:.18em;color:var(--pietra);margin-bottom:14px}
+.percorso a{color:var(--verde);text-decoration:none;font-weight:600}
+h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;line-height:1.15}
+.sottotitolo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--rosso);margin-top:6px}
+
+.langbar{display:flex;justify-content:center;gap:8px;margin:22px 0 6px;flex-wrap:wrap}
+.langbar button{
+  border:1.5px solid var(--verde);background:transparent;color:var(--verde);
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;
+  padding:8px 16px;cursor:pointer;border-radius:2px;
+}
+.langbar button[aria-pressed="true"]{background:var(--verde);color:var(--carta)}
+#lb-lld{border-color:var(--oro);color:var(--oro)}
+#lb-lld[aria-pressed="true"]{background:var(--oro);color:var(--carta);border-color:var(--oro)}
+.langbar button:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+
+.ascolta{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin:20px auto 8px;padding:14px 26px;border:none;cursor:pointer;
+  background:var(--rosso);color:var(--carta);border-radius:2px;
+  font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;
+}
+.ascolta[data-playing="true"]{background:var(--inchiostro)}
+.nota-voce{text-align:center;font-size:12.5px;color:var(--pietra);margin-bottom:12px}
+
+article{padding-top:14px}
+article p{margin:0 0 20px;font-family:'Cormorant Garamond',serif;font-size:20.5px;line-height:1.72}
+article p.incipit{font-style:italic;font-size:22px;color:var(--rosso);text-align:center;margin:24px 0 26px}
+article em{font-style:italic;color:var(--verde);font-weight:600}
+.capolettera::first-letter{font-size:58px;float:left;line-height:.9;padding-right:8px;color:var(--oro);font-weight:700}
+.separatore{display:flex;align-items:center;gap:12px;margin:26px 0;color:var(--oro)}
+.separatore::before,.separatore::after{content:"";flex:1;height:1px;background:#D8D2C4}
+.separatore span{font-size:16px}
+.dettaglio{
+  margin-top:26px;padding:18px 20px;background:#FDFCF8;border:1.5px solid #D8D2C4;border-left:5px solid var(--oro);
+  font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;
+}
+
+footer{margin-top:44px;text-align:center}
+footer .fascia{display:flex;height:6px;margin-bottom:14px}
+footer small{font-size:11.5px;color:var(--pietra);letter-spacing:.08em}
+footer small b{color:var(--rosso)}
+</style>
+</head>
+<body>
+
+<div class="bandiera"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div></div>
+
+<div class="wrap">
+
+<header class="testata">
+  <div class="percorso">CASTELLO DEL BUONCONSIGLIO · TRENTO</div>
+  <h1 data-i18n="titolo">L'iscrizione di Gaio Valerio Mariano</h1>
+  <div class="sottotitolo" data-i18n="sotto">il primo nome, duemila anni fa</div>
+</header>
+
+<div class="langbar" role="group" aria-label="Lingua">
+  <button id="lb-lld" aria-pressed="false" onclick="setLang('lld')">LADIN</button>
+  <button id="lb-it" aria-pressed="true" onclick="setLang('it')">ITALIANO</button>
+  <button id="lb-en" aria-pressed="false" onclick="setLang('en')">ENGLISH</button>
+  <button id="lb-de" aria-pressed="false" onclick="setLang('de')">DEUTSCH</button>
+</div>
+
+<button class="ascolta" id="btnPlay" onclick="speak()"><span>🔊</span><span data-i18n="btn">ASCOLTA LA SALA</span></button>
+<div class="nota-voce" data-i18n="nota">Voce dimostrativa del browser — in produzione: voce naturale pre-registrata</div>
+
+<article id="testo"></article>
+
+<footer>
+  <div class="fascia"><div style="flex:1;background:#fff"></div><div style="flex:1;background:var(--rosso)"></div><div style="flex:1;background:#fff"></div><div style="flex:1;background:var(--verde)"></div></div>
+  <small><b>DEMO</b> · TESTO DA VALIDARE CON IL MUSEO STORICO DEL TRENTINO · UN SISTEMA GUSCIO® · BREVETTI DEP. 2026</small>
+</footer>
+
+</div>
+
+<script>
+var T = {
+it:{
+ titolo:"L'iscrizione di Gaio Valerio Mariano", sotto:"il primo nome, duemila anni fa",
+ btn:"ASCOLTA LA STORIA", nota:"Voce dimostrativa del browser — in produzione: voce naturale pre-registrata",
+ tts:"it-IT",
+ par:[
+  ["incipit","Una lastra di calcare rosso. Un nome inciso quasi duemila anni fa. E un filo che arriva fino a oggi."],
+  ["capolettera","Qui, al Castello del Buonconsiglio, è conservata un'iscrizione romana che porta il nome di Gaio Valerio Mariano. Poche parole, incise nella pietra in un'epoca in cui Trento si chiamava ancora Tridentum — eppure sufficienti a far arrivare fino a noi la traccia di una persona reale, con un compito reale."],
+  ["p","È una delle letture più suggestive di questa lastra: che Mariano fosse legato a una qualche forma di sorveglianza e servizio alla comunità — un'ipotesi ancora al vaglio degli studiosi, e per questo <em>raccontata qui con la cautela che merita</em>. Ma se anche una parte di questa lettura fosse vera, ci troveremmo davanti a uno dei nomi più antichi collegabili all'idea stessa di prendersi cura, collettivamente, della propria città."],
+  ["sep","✦"],
+  ["p","Duemila anni dopo, in Trentino, migliaia di vigili del fuoco volontari continuano — senza saperlo — quello stesso gesto: essere presenti, pronti, al servizio degli altri. Non un mestiere tramandato in linea diretta, ma un'idea che la storia sembra aver scelto di non lasciar cadere."],
+  ["dettaglio","Questo testo è una prima bozza, pensata per essere verificata e arricchita insieme al Museo Storico del Trentino, prima di qualunque utilizzo pubblico."]
+ ]},
+en:{
+ titolo:"The Inscription of Gaius Valerius Marianus", sotto:"the first name, two thousand years ago",
+ btn:"LISTEN TO THE STORY", nota:"Demo browser voice — in production: natural pre-recorded voice",
+ tts:"en-GB",
+ par:[
+  ["incipit","A slab of red limestone. A name carved almost two thousand years ago. And a thread that reaches all the way to today."],
+  ["capolettera","Here, at Buonconsiglio Castle, a Roman inscription is preserved bearing the name of Gaius Valerius Marianus. Just a few words, carved in stone at a time when Trento was still called Tridentum — yet enough to carry the trace of a real person, with a real duty, all the way to us."],
+  ["p","One of the most evocative readings of this slab suggests that Marianus may have been connected to some form of watch and service to the community — a hypothesis still being studied by scholars, and told here with the caution it deserves. But even if part of this reading were true, we would be looking at one of the oldest names linked to the very idea of collectively caring for one's own city."],
+  ["sep","✦"],
+  ["p","Two thousand years later, across Trentino, thousands of volunteer firefighters carry on — without knowing it — that same gesture: being present, ready, at the service of others. Not a trade passed down in a direct line, but an idea that history seems to have chosen never to let go."],
+  ["dettaglio","This text is a first draft, meant to be verified and enriched together with the Museo Storico del Trentino, before any public use."]
+ ]},
+de:{
+ titolo:"Die Inschrift des Gaius Valerius Marianus", sotto:"der erste Name, vor zweitausend Jahren",
+ btn:"GESCHICHTE ANHÖREN", nota:"Demo-Browserstimme — in Produktion: natürliche, vorab aufgenommene Stimme",
+ tts:"de-DE",
+ par:[
+  ["incipit","Eine Platte aus rotem Kalkstein. Ein Name, fast zweitausend Jahre alt eingemeißelt. Und ein Faden, der bis heute reicht."],
+  ["capolettera","Hier, im Castello del Buonconsiglio, wird eine römische Inschrift aufbewahrt, die den Namen Gaius Valerius Marianus trägt. Nur wenige Worte, in Stein gemeißelt zu einer Zeit, als Trient noch Tridentum hieß — und dennoch genug, um die Spur einer realen Person mit einer realen Aufgabe bis zu uns zu tragen."],
+  ["p","Eine der eindrücklichsten Deutungen dieser Platte besagt, dass Marianus mit einer Form von Wache und Dienst an der Gemeinschaft verbunden gewesen sein könnte — eine Hypothese, die noch von Fachleuten geprüft wird, und die hier mit der gebotenen Vorsicht erzählt wird. Doch selbst wenn nur ein Teil dieser Deutung zuträfe, stünden wir vor einem der ältesten Namen, die sich mit der Idee verbinden lassen, gemeinsam für die eigene Stadt Sorge zu tragen."],
+  ["sep","✦"],
+  ["p","Zweitausend Jahre später führen im Trentino Tausende freiwillige Feuerwehrleute — ohne es zu wissen — dieselbe Geste fort: präsent zu sein, bereit, im Dienst der anderen. Kein direkt weitergegebenes Handwerk, sondern eine Idee, die die Geschichte offenbar nie losgelassen hat."],
+  ["dettaglio","Dieser Text ist ein erster Entwurf, der gemeinsam mit dem Museo Storico del Trentino geprüft und ausgearbeitet werden soll, bevor er öffentlich verwendet wird."]
+ ]},
+lld:{
+ titolo:"L'iscrizione di Gaio Valerio Mariano", sotto:"la lingua più antica della valle",
+ btn:"", nota:"", tts:"it-IT",
+ par:[
+  ["incipit","LADIN"],
+  ["capolettera","La versione ladina di questo testo non è ancora qui — ed è una scelta. Il ladino non si affida a una macchina: è la lingua più antica della valle, e merita di più."],
+  ["p","Il testo sarà tradotto e validato con l'<em>Istituto Cultural Ladin</em>, e la voce che lo leggerà sarà la <em>voce vera di una persona della Comunità</em>."],
+  ["dettaglio","Dieci lingue parlate dalla tecnologia più avanzata del mondo. E una — la vostra — parlata da voi."]
+ ]}
+};
+
+var LANG='it', playing=false;
+function render(){
+  var d=T[LANG];
+  document.documentElement.lang = LANG==='lld' ? 'it' : LANG;
+  ['lld','it','en','de'].forEach(function(x){document.getElementById('lb-'+x).setAttribute('aria-pressed', x===LANG?'true':'false');});
+  var showPlay = LANG!=='lld';
+  document.getElementById('btnPlay').style.display = showPlay?'flex':'none';
+  document.querySelector('.nota-voce').style.display = showPlay?'block':'none';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n'); if(d[k]) el.textContent=d[k];});
+  var art=document.getElementById('testo'); art.innerHTML='';
+  d.par.forEach(function(pr){
+    if(pr[0]==='sep'){var s=document.createElement('div');s.className='separatore';s.innerHTML='<span>'+pr[1]+'</span>';art.appendChild(s);return;}
+    var el=document.createElement(pr[0]==='dettaglio'?'div':'p');
+    if(pr[0]==='incipit')el.className='incipit';
+    if(pr[0]==='capolettera')el.className='capolettera';
+    if(pr[0]==='dettaglio')el.className='dettaglio';
+    el.innerHTML=pr[1];
+    art.appendChild(el);
+  });
+}
+function setLang(l){stopSpeak(); LANG=l; render();}
+function stopSpeak(){
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  playing=false;
+  var b=document.getElementById('btnPlay'); b.dataset.playing='false';
+  b.innerHTML='<span>🔊</span><span>'+T[LANG].btn+'</span>';
+}
+function speak(){
+  if(!('speechSynthesis' in window)) return;
+  if(playing){stopSpeak();return;}
+  var d=T[LANG];
+  var text=d.par.map(function(pr){return pr[0]==='sep'?'':pr[1].replace(/<[^>]+>/g,'');}).join(' ');
+  var u=new SpeechSynthesisUtterance(text);
+  u.lang=d.tts; u.rate=0.95;
+  var vs=window.speechSynthesis.getVoices().filter(function(v){return v.lang&&v.lang.toLowerCase().indexOf(LANG==='lld'?'it':LANG)===0;});
+  if(vs.length)u.voice=vs[0];
+  u.onend=stopSpeak; u.onerror=stopSpeak;
+  playing=true;
+  var b=document.getElementById('btnPlay'); b.dataset.playing='true';
+  b.innerHTML='<span>◼</span><span>STOP</span>';
+  window.speechSynthesis.speak(u);
+}
+render();
+</script>
+</body>
+</html>
